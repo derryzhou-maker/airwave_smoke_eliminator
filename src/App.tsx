@@ -157,24 +157,24 @@ export default function App() {
                 <span className="label-caps">Professional Air Logistics</span>
                 <div className="w-12 h-px bg-brand-orange/40"></div>
               </div>
-              <h1 className="text-6xl xl:text-8xl font-display font-black leading-[0.95] mb-8 uppercase italic tracking-tighter">
+              <h1 className="text-4xl sm:text-6xl xl:text-8xl font-display font-black leading-[0.95] mb-8 uppercase italic tracking-tighter">
                 Roast In The City.<br />
                 <span className="text-brand-orange">Breathe Mountain Air.</span>
               </h1>
-              <p className="text-lg text-zinc-100 mb-12 leading-relaxed max-w-lg font-medium">
+              <p className="text-base md:text-lg text-zinc-100 mb-12 leading-relaxed max-w-lg font-medium">
                 The world's first industrial-grade molecular smoke catalyst scaled for the urban workstation. Zero pipes. Zero odors. Zero compromise.
               </p>
               
-              <div className="flex flex-wrap gap-5 mb-16">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-5 mb-16">
                 <a 
                   href="https://activo-tech.com/?add-to-cart=2257" 
-                  className="btn-primary flex items-center gap-3 px-10 py-5 rounded-2xl text-base"
+                  className="btn-primary flex items-center justify-center gap-3 px-10 py-5 rounded-2xl text-base"
                 >
                   Order Now <ArrowRight size={18} />
                 </a>
                 <a 
                   href="https://activo-tech.com/?page_id=1760" 
-                  className="flex items-center gap-3 bg-white/10 border border-white/20 text-white px-10 py-5 rounded-2xl text-base font-bold hover:bg-white/20 transition-all"
+                  className="flex items-center justify-center gap-3 bg-white/10 border border-white/20 text-white px-10 py-5 rounded-2xl text-base font-bold hover:bg-white/20 transition-all"
                 >
                   Get Your Custom Quote
                 </a>
@@ -223,7 +223,8 @@ export default function App() {
                   className="w-full h-auto scale-105 active:scale-100 transition-transform duration-500"
                   playsInline
                   loop
-                  muted={false}
+                  muted
+                  preload="metadata"
                 />
                 
                 {/* Custom Play Overlay */}
@@ -275,24 +276,26 @@ export default function App() {
         {/* --- Comparison Module --- */}
         <section className="py-24">
           <div className="max-w-5xl mx-auto px-6">
-            <div className="frosted rounded-[3rem] overflow-hidden">
-              <div className="grid grid-cols-3 font-display uppercase italic font-black text-center text-xs tracking-widest">
-                <div className="p-8 bg-zinc-900 border-r border-white/5 flex items-center justify-center">Features</div>
-                <div className="p-8 bg-brand-orange text-white flex items-center justify-center underline decoration-2 underline-offset-4">AirWave</div>
-                <div className="p-8 bg-zinc-950/50 flex items-center justify-center opacity-40">Conventional</div>
-              </div>
-              {[
-                { label: "Install Effort", air: "Instant", conv: "Wall Drill" },
-                { label: "Maintenance", air: "Self-Clean", conv: "Dirty Filters" },
-                { label: "By-product", air: "H₂O & CO₂", conv: "Ozone Leak" },
-                { label: "Odor Removal", air: "Molecular", conv: "Venting Only" }
-              ].map((row, i) => (
-                <div key={i} className="grid grid-cols-3 border-t border-white/5 text-center text-[11px] font-black tracking-widest uppercase">
-                  <div className="p-8 text-zinc-200 border-r border-white/5">{row.label}</div>
-                  <div className="p-8 text-white">{row.air}</div>
-                  <div className="p-8 text-zinc-300 italic">{row.conv}</div>
+            <div className="frosted rounded-[2.5rem] md:rounded-[3rem] overflow-x-auto">
+              <div className="min-w-[450px]">
+                <div className="grid grid-cols-3 font-display uppercase italic font-black text-center text-[10px] md:text-xs tracking-widest">
+                  <div className="p-4 md:p-8 bg-zinc-900 border-r border-white/5 flex items-center justify-center">Features</div>
+                  <div className="p-4 md:p-8 bg-brand-orange text-white flex items-center justify-center underline decoration-2 underline-offset-4">AirWave</div>
+                  <div className="p-4 md:p-8 bg-zinc-950/50 flex items-center justify-center opacity-40">Conventional</div>
                 </div>
-              ))}
+                {[
+                  { label: "Install Effort", air: "Instant", conv: "Wall Drill" },
+                  { label: "Maintenance", air: "Self-Clean", conv: "Dirty Filters" },
+                  { label: "By-product", air: "H₂O & CO₂", conv: "Ozone Leak" },
+                  { label: "Odor Removal", air: "Molecular", conv: "Venting Only" }
+                ].map((row, i) => (
+                  <div key={i} className="grid grid-cols-3 border-t border-white/5 text-center text-[10px] md:text-[11px] font-black tracking-widest uppercase">
+                    <div className="p-4 md:p-8 text-zinc-200 border-r border-white/5">{row.label}</div>
+                    <div className="p-4 md:p-8 text-white">{row.air}</div>
+                    <div className="p-4 md:p-8 text-zinc-300 italic">{row.conv}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -316,10 +319,11 @@ export default function App() {
                 </li>
               </ul>
             </div>
-            <div className="order-1 md:order-2 rounded-[3rem] overflow-hidden frosted p-8">
+            <div className="order-1 md:order-2 rounded-[3rem] overflow-hidden frosted p-4 sm:p-8">
               <img 
                 src="/tech_airflow_logic.png" 
                 alt="Airflow Logic" 
+                loading="lazy"
                 className="w-full h-auto drop-shadow-2xl brightness-110" 
                 onError={(e) => (e.currentTarget.src = 'https://placehold.co/600x400/121212/f27d26?text=Principle+Diagram+1:+Airflow')}
               />
@@ -414,15 +418,16 @@ export default function App() {
             </div>
 
             <div className="relative">
-              <div className="frosted rounded-[3rem] p-6 shadow-2xl overflow-hidden group">
+              <div className="frosted rounded-[2.5rem] sm:rounded-[3rem] p-4 sm:p-6 shadow-2xl overflow-hidden group">
                 <img 
                   src="/tech_internal_core.PNG" 
                   alt="Internal Core Catalyst" 
-                  className="w-full h-auto rounded-[2rem] grayscale group-hover:grayscale-0 transition-all duration-700" 
+                  loading="lazy"
+                  className="w-full h-auto rounded-[1.5rem] sm:rounded-[2rem] grayscale group-hover:grayscale-0 transition-all duration-700" 
                   onError={(e) => (e.currentTarget.src = 'https://placehold.co/600x600/121212/333?text=Principle+Diagram+2:+Core')}
                 />
-                <div className="absolute top-12 right-12 bg-brand-orange text-white w-24 h-24 rounded-full flex flex-col items-center justify-center font-display font-black text-2xl italic leading-none shadow-2xl border-4 border-white/20">
-                  99.9%<br /><span className="text-[10px] not-italic opacity-100 uppercase tracking-widest mt-1">CLEAN</span>
+                <div className="absolute top-6 right-6 sm:top-12 sm:right-12 bg-brand-orange text-white w-16 h-16 sm:w-24 sm:h-24 rounded-full flex flex-col items-center justify-center font-display font-black text-lg sm:text-2xl italic leading-none shadow-2xl border-4 border-white/20">
+                  99.9%<br /><span className="text-[8px] sm:text-[10px] not-italic opacity-100 uppercase tracking-widest mt-1">CLEAN</span>
                 </div>
               </div>
             </div>
@@ -432,25 +437,26 @@ export default function App() {
         {/* --- Use Cases --- */}
         <section className="py-24" id="use-cases">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="flex justify-between items-end mb-20">
-              <h2 className="text-5xl font-display font-black uppercase italic tracking-tighter">Native Environments</h2>
-              <span className="label-caps mb-4">Vertical Flexibility</span>
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 sm:mb-20 gap-4">
+              <h2 className="text-4xl sm:text-5xl font-display font-black uppercase italic tracking-tighter">Native Environments</h2>
+              <span className="label-caps">Vertical Flexibility</span>
             </div>
-            <div className="grid md:grid-cols-3 gap-6 h-[600px]">
+            <div className="grid md:grid-cols-3 gap-6 md:h-[600px]">
                {[
                  { title: "Home Lab", img: "/case_home.JPEG", span: "col-span-1" },
                  { title: "Sample Roastery", img: "/case_sample.JPEG", span: "col-span-1" },
                  { title: "Urban Studio", img: "/case_urban.JPEG", span: "col-span-1" }
                ].map((caseItem, idx) => (
-                 <div key={idx} className={`relative group rounded-[3rem] overflow-hidden ${caseItem.span} h-full`}>
+                 <div key={idx} className={`relative group rounded-[2.5rem] sm:rounded-[3rem] overflow-hidden ${caseItem.span} h-[300px] md:h-full`}>
                     <img 
                       src={caseItem.img} 
                       alt={caseItem.title} 
+                      loading="lazy"
                       className="absolute inset-0 w-full h-full object-cover grayscale opacity-50 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000" 
                       onError={(e) => (e.currentTarget.src = 'https://placehold.co/400x800/121212/333?text=' + caseItem.title)}
                     />
-                    <div className="absolute inset-0 bg-linear-to-t from-black via-black/20 to-transparent p-12 flex flex-col justify-end">
-                      <h3 className="text-4xl font-display font-black text-white mb-2 uppercase italic leading-none">{caseItem.title}</h3>
+                    <div className="absolute inset-0 bg-linear-to-t from-black via-black/20 to-transparent p-8 sm:p-12 flex flex-col justify-end">
+                      <h3 className="text-3xl sm:text-4xl font-display font-black text-white mb-2 uppercase italic leading-none">{caseItem.title}</h3>
                       <div className="w-12 h-1 bg-brand-orange group-hover:w-full transition-all duration-700"></div>
                     </div>
                  </div>
@@ -470,10 +476,11 @@ export default function App() {
               <span className="label-caps mb-8 font-black">Supply Chain Integrity</span>
               <h2 className="text-4xl md:text-6xl font-display font-black mb-12 uppercase italic leading-tight">Official DiFluid Authorization</h2>
               
-              <div className="w-full bg-white rounded-2xl shadow-2xl p-6 transform hover:scale-[1.02] transition-transform duration-500 mb-16">
+              <div className="w-full bg-white rounded-2xl shadow-2xl p-3 sm:p-6 transform hover:scale-[1.02] transition-transform duration-500 mb-16">
                 <img 
                   src="/授权证书.png" 
                   alt="Authorization Certificate" 
+                  loading="lazy"
                   className="w-full h-auto rounded-lg" 
                   onError={(e) => (e.currentTarget.src = 'https://placehold.co/800x600/fff/f27d26?text=DiFluid+Activo+Authorization+2025-2027')}
                 />
@@ -513,7 +520,7 @@ export default function App() {
                     { l: "Power Input", v: "2400W / 1800W" },
                     { l: "Net Weight", v: "6.9 kg (Ultra Portable)" }
                   ].map((s, i) => (
-                    <div key={i} className="flex justify-between items-center p-6 bg-white/[0.04] rounded-2xl hover:bg-white/[0.08] transition-colors border border-white/10">
+                    <div key={i} className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 p-6 bg-white/[0.04] rounded-2xl hover:bg-white/[0.08] transition-colors border border-white/10">
                       <span className="text-[10px] font-black text-zinc-300 uppercase tracking-widest">{s.l}</span>
                       <span className="text-sm font-black uppercase italic text-white tracking-widest">{s.v}</span>
                     </div>
@@ -524,6 +531,7 @@ export default function App() {
                 <div className="absolute inset-0 bg-brand-orange/10 blur-[100px] rounded-full group-hover:bg-brand-orange/20 transition-all"></div>
                 <img 
                   src="/AirWave_Technical.png" 
+                  loading="lazy"
                   className="w-full opacity-90 group-hover:opacity-100 transition-all duration-1000" 
                   alt="AirWave Technical Matrix" 
                   onError={(e) => (e.currentTarget.src = 'https://placehold.co/800x450/121212/f27d26?text=AirWave+Technical+Matrix')}
@@ -585,6 +593,7 @@ export default function App() {
                     <img 
                       src={spec.img} 
                       alt={spec.title} 
+                      loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
                       onError={(e) => {
                         e.currentTarget.src = `https://placehold.co/400x400/121212/f27d26?text=${spec.title.replace(/ /g, '+')}`;
@@ -686,6 +695,7 @@ export default function App() {
                 <img 
                   src="/activo_logo.png" 
                   alt="Activo" 
+                  loading="lazy"
                   className="h-10 object-contain mb-10" 
                   onError={(e) => {
                     e.currentTarget.src = 'https://placehold.co/160x60/f27d26/white?text=ACTIVO+TECH';
